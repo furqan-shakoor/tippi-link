@@ -17,7 +17,7 @@ class TippiLink:
         connected_macs = arr[0::4]
         dhcp = self.get_dhcp_leases()
         connected_dhcp = filter(lambda client: client['mac_address'] in connected_macs, dhcp)
-        print connected_dhcp
+        return connected_dhcp
 
     def get_dhcp_leases(self):
         arr = self._get_array_from_page("AssignedIpAddrListRpm", "DHCPDynList")
