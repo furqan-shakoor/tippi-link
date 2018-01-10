@@ -2,6 +2,9 @@ from setuptools import setup
 
 setup(
     name='tippiLink',
-    version='0.1',
-    packages=['tippiLink']
+    version='0.11',
+    packages=['tippiLink'],
+    install_requires=[
+        "requests==2.18.4"
+    ],
 )
