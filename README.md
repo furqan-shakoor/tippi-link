@@ -6,7 +6,7 @@ Use `pip install git+https://github.com/furqan-shakoor/tippi-link.git`<br/>
 I haven't published it to pypi yet
 
 ### Usage
-~~~
+```python
 from tippiLink import TippiLink
 tl = TippiLink('admin', 'password', '192.168.1.1')
 output = tl.get_connected_clients()
@@ -21,7 +21,7 @@ output is
   'ip': '192.168.1.3’,
   'mac_address': ‘DC-AC-BC-EE-87-FE’}]
 """
-~~~
+```
 
 ### Contribution
 Feel free to contribute changes as pull requests. If you run into bugs, please raise them as Github issues
