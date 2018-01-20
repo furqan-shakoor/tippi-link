@@ -12,6 +12,23 @@ class TippiLink:
         self._password = password
         self._host = host
 
+    def _get_headers(self):
+        headers = {
+            'Referer': 'http://%s/userRpm/MenuRpm.htm' % self._host,
+            'Authorization': self._auth_header(),
+        }
+        return headers
+
+    def restart_router(self):
+        params = (
+            ('Reboot', 'Reboot'),
+        )
+        res = requests.get('http://%s/userRpm/SysRebootRpm.htm' % self._host,
+                           headers=self._get_headers(), params=params)
+
+        if res.status_code != 200:
+            raise Exception("Response code %d on router restart" % res.status_code)
+
     def get_connected_clients(self):
         arr = self._get_array_from_page("WlanStationRpm", "hostList")
         connected_macs = arr[0::4]
@@ -39,12 +56,8 @@ class TippiLink:
         return response
 
     def _get_array_from_page(self, pageName, arrayName):
-        headers = {
-            'Referer': 'http://%s/userRpm/MenuRpm.htm' % self._host,
-            'Authorization': self._auth_header(),
-        }
 
-        response = requests.get('http://%s/userRpm/%s.htm' % (self._host, pageName), headers=headers)
+        response = requests.get('http://%s/userRpm/%s.htm' % (self._host, pageName), headers=self._get_headers())
 
         content = response.content
 

@@ -5,6 +5,11 @@ A scraper for the TP-LINK router admin portal
 Use `pip install git+https://github.com/furqan-shakoor/tippi-link.git`<br/>
 I haven't published it to pypi yet
 
+### Buildling
+- Change package version in setup.py
+- Source venv
+- Run `python setup.py sdist`
+
 ### Usage
 ```python
 from tippiLink import TippiLink
